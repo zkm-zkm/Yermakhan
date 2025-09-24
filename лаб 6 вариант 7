@@ -1,0 +1,35 @@
+import random
+
+# --- Задача 1: Массив из 10 чисел и максимум четных ---
+print("Введите 10 действительных чисел через пробел:")
+arr = list(map(float, input().split()))
+
+if len(arr) != 10:
+    print("Нужно ввести ровно 10 чисел!")
+else:
+    # Фильтруем четные (целые числа, делящиеся на 2)
+    even_elements = [x for x in arr if x % 2 == 0]
+
+    if even_elements:
+        max_even = max(even_elements)
+        print("Максимальный четный элемент:", max_even)
+    else:
+        print("Четных элементов нет")
+
+# --- Задача 2: Двумерный массив 5x10 ---
+# Можно заполнить случайными числами от -10 до 10
+A = [[random.randint(-10, 10) for _ in range(10)] for _ in range(5)]
+
+positive_count = sum(1 for row in A for x in row if x > 0)
+negative_count = sum(1 for row in A for x in row if x < 0)
+
+print("\nМассив A (5x10):")
+for row in A:
+    print(row)
+
+if positive_count > negative_count:
+    print("Положительных чисел больше:", positive_count)
+elif negative_count > positive_count:
+    print("Отрицательных чисел больше:", negative_count)
+else:
+    print("Положительных и отрицательных чисел поровну")
